@@ -7,13 +7,7 @@ namespace ExampleLib;
 
 public static class FileUtil
 {
-    /// <summary>
-    /// Перезаписывает указанный текстовый файл, добавляя номера строк к каждой строке
-    /// Нумерация начинается с 1. Формат: "1. Первая строка"
-    /// </summary>
-    /// <param name="path">Путь к файлу</param>
-    /// <exception cref="ArgumentException">Если path пустой или null</exception>
-    /// <exception cref="FileNotFoundException">Если файл не существует</exception>
+/// Перезаписывает указанный текстовый файл, добавляя номера строк к каждой строке
     public static void AddLineNumbers(string path)
     {
         if (string.IsNullOrWhiteSpace(path))
@@ -40,10 +34,6 @@ public static class FileUtil
         File.WriteAllLines(path, numberedLines);
     }
 
-    /// <summary>
-    /// Сортирует строки в указанном файле.
-    /// Перезаписывает файл, но не атомарно: ошибка ввода-вывода при записи приведёт к потере данных.
-    /// </summary>
     public static void SortFileLines(string path)
     {
         // Читаем и сортируем строки файла.
