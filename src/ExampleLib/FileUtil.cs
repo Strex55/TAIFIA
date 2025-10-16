@@ -1,9 +1,45 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace ExampleLib;
 
 public static class FileUtil
 {
+    /// <summary>
+    /// Перезаписывает указанный текстовый файл, добавляя номера строк к каждой строке
+    /// Нумерация начинается с 1. Формат: "1. Первая строка"
+    /// </summary>
+    /// <param name="path">Путь к файлу</param>
+    /// <exception cref="ArgumentException">Если path пустой или null</exception>
+    /// <exception cref="FileNotFoundException">Если файл не существует</exception>
+    public static void AddLineNumbers(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            throw new ArgumentException("Path cannot be null or empty", nameof(path));
+        }
+
+        if (!File.Exists(path))
+        {
+            throw new FileNotFoundException($"File not found: {path}");
+        }
+
+        // Читаем все строки файла
+        string[] lines = File.ReadAllLines(path);
+
+        // Обрабатываем каждую строку - добавляем номер
+        List<string> numberedLines = new List<string>();
+        for (int i = 0; i < lines.Length; i++)
+        {
+            numberedLines.Add($"{i + 1}. {lines[i]}");
+        }
+
+        // Записываем обратно в файл
+        File.WriteAllLines(path, numberedLines);
+    }
+
     /// <summary>
     /// Сортирует строки в указанном файле.
     /// Перезаписывает файл, но не атомарно: ошибка ввода-вывода при записи приведёт к потере данных.
