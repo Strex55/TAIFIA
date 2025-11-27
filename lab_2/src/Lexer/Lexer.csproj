@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);SA1136;SA1309;SA1516;SA1201;SA1028;SA1413;SA1513;SA1503;SA1505;SA1508;SA1502;RCS1008;RCS1012</NoWarn>
   </PropertyGroup>
-
 </Project>
