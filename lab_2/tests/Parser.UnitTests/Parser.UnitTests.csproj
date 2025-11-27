@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Parser\Parser.csproj" />
     <ProjectReference Include="..\..\src\Lexer\Lexer.csproj" />
   </ItemGroup>
 
