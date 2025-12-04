@@ -7,32 +7,33 @@ public class Lexer
     private readonly string source;
     private readonly Position position;
 
-    private static readonly Dictionary<string, TokenType> Keywords = new Dictionary<string, TokenType>(StringComparer.OrdinalIgnoreCase)
-    {
-        ["start"] = TokenType.Start,
-        ["end"] = TokenType.End,
-        ["namespace"] = TokenType.Namespace,
-        ["import"] = TokenType.Import,
-        ["let"] = TokenType.Let,
-        ["const"] = TokenType.Const,
-        ["func"] = TokenType.Func,
-        ["return"] = TokenType.Return,
-        ["if"] = TokenType.If,
-        ["else"] = TokenType.Else,
-        ["for"] = TokenType.For,
-        ["in"] = TokenType.In,
-        ["while"] = TokenType.While,
-        ["break"] = TokenType.Break,
-        ["continue"] = TokenType.Continue,
-        ["show"] = TokenType.Show,
-        ["true"] = TokenType.True,
-        ["false"] = TokenType.False,
-        ["null"] = TokenType.Null,
-        ["type"] = TokenType.Type,
-        ["and"] = TokenType.And,
-        ["or"] = TokenType.Or,
-        ["not"] = TokenType.Not,
-    };
+    private static readonly Dictionary<string, TokenType> Keywords =
+     new Dictionary<string, TokenType>()
+     {
+         ["start"] = TokenType.Start,
+         ["end"] = TokenType.End,
+         ["namespace"] = TokenType.Namespace,
+         ["import"] = TokenType.Import,
+         ["let"] = TokenType.Let,
+         ["const"] = TokenType.Const,
+         ["func"] = TokenType.Func,
+         ["return"] = TokenType.Return,
+         ["if"] = TokenType.If,
+         ["else"] = TokenType.Else,
+         ["for"] = TokenType.For,
+         ["in"] = TokenType.In,
+         ["while"] = TokenType.While,
+         ["break"] = TokenType.Break,
+         ["continue"] = TokenType.Continue,
+         ["show"] = TokenType.Show,
+         ["true"] = TokenType.True,
+         ["false"] = TokenType.False,
+         ["null"] = TokenType.Null,
+         ["type"] = TokenType.Type,
+         ["and"] = TokenType.And,
+         ["or"] = TokenType.Or,  
+         ["not"] = TokenType.Not,
+     };
 
     public Lexer(string source)
     {

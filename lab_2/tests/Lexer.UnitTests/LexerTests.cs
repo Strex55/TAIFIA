@@ -1,4 +1,5 @@
 using Astra.Lexer;
+
 using Xunit;
 
 namespace Lexer.UnitTests;
@@ -13,7 +14,7 @@ public class LexerTests
         Assert.Equal(TokenType.EndOfFile, token.Type);
         Assert.Equal("", token.Value);
     }
-    
+
     [Fact]
     public void OnlyWhitespace_ReturnsEndOfFile()
     {
@@ -67,20 +68,29 @@ public class LexerTests
     }
 
     [Fact]
-    public void KeywordsCaseInsensitive_ReturnsCorrectTokens()
+    public void KeywordsCaseSensitive_OnlyLowercaseAreKeywords()
     {
-        Astra.Lexer.Lexer lexer = new Astra.Lexer.Lexer("Start END nAmEsPaCe");
+        Astra.Lexer.Lexer lexer = new Astra.Lexer.Lexer("start Start START let");
+
+        // "start" (нижний регистр) - ключевое слово
         Token token1 = lexer.NextToken();
         Assert.Equal(TokenType.Start, token1.Type);
-        Assert.Equal("Start", token1.Value);
-        
+        Assert.Equal("start", token1.Value);
+
+        // "Start" (с заглавной) - идентификатор
         Token token2 = lexer.NextToken();
-        Assert.Equal(TokenType.End, token2.Type);
-        Assert.Equal("END", token2.Value);
-        
+        Assert.Equal(TokenType.Identifier, token2.Type);
+        Assert.Equal("Start", token2.Value);
+
+        // "START" (верхний регистр) - идентификатор
         Token token3 = lexer.NextToken();
-        Assert.Equal(TokenType.Namespace, token3.Type);
-        Assert.Equal("nAmEsPaCe", token3.Value);
+        Assert.Equal(TokenType.Identifier, token3.Type);
+        Assert.Equal("START", token3.Value);
+
+        // "let" (нижний регистр) - ключевое слово
+        Token token4 = lexer.NextToken();
+        Assert.Equal(TokenType.Let, token4.Type);
+        Assert.Equal("let", token4.Value);
     }
 
     [Fact]
@@ -331,18 +341,18 @@ public class LexerTests
                 show("Result:", result)
             end
             """;
-        
+
         Astra.Lexer.Lexer lexer = new Astra.Lexer.Lexer(code);
         List<Token> tokens = new List<Token>();
-        
+
         Token token;
         while ((token = lexer.NextToken()).Type != TokenType.EndOfFile)
         {
             tokens.Add(token);
         }
-        
+
         TokenType[] tokenTypes = tokens.Select(t => t.Type).ToArray();
-        
+
         Assert.Contains(TokenType.Namespace, tokenTypes);
         Assert.Contains(TokenType.Identifier, tokenTypes);
         Assert.Contains(TokenType.Func, tokenTypes);
@@ -367,34 +377,6 @@ public class LexerTests
         Assert.Equal(TokenType.Semicolon, lexer.NextToken().Type);
     }
 
-    // [Fact]
-    // public void PositionTracking_IsCorrect()
-    // {
-    //     Astra.Lexer.Lexer lexer = new Astra.Lexer.Lexer("let x = 5;\nshow(x);");
-    //     Token token1 = lexer.NextToken();
-    //     Assert.Equal(1, token1.Line);
-    //     Assert.Equal(1, token1.Column);
-        
-    //     Token token2 = lexer.NextToken();
-    //     Assert.Equal(1, token2.Line);
-    //     Assert.Equal(5, token2.Column);
-        
-    //     Token token3 = lexer.NextToken();
-    //     Assert.Equal(1, token3.Line);
-    //     Assert.Equal(7, token3.Column);
-        
-    //     Token token4 = lexer.NextToken();
-    //     Assert.Equal(1, token4.Line);
-    //     Assert.Equal(9, token4.Column);
-        
-    //     Token token5 = lexer.NextToken();
-    //     Assert.Equal(1, token5.Line);
-    //     Assert.Equal(10, token5.Column);
-        
-    //     Token token6 = lexer.NextToken();
-    //     Assert.Equal(2, token6.Line);
-    //     Assert.Equal(1, token6.Column);
-    // }
 
     [Fact]
     public void MixedKeywordsAndIdentifiers_ReturnsCorrectTokens()
