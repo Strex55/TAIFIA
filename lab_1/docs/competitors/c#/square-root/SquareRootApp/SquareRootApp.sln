@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36616.10 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareRootApp", "SquareRootApp.csproj", "{9A59FED5-27BE-40A1-A913-A4EE7280820E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareRootTests", "..\SquareRootTests\SquareRootTests.csproj", "{B1BCB8BD-0841-419B-8094-57AC094257F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A59FED5-27BE-40A1-A913-A4EE7280820E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A59FED5-27BE-40A1-A913-A4EE7280820E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A59FED5-27BE-40A1-A913-A4EE7280820E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A59FED5-27BE-40A1-A913-A4EE7280820E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BCB8BD-0841-419B-8094-57AC094257F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BCB8BD-0841-419B-8094-57AC094257F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BCB8BD-0841-419B-8094-57AC094257F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BCB8BD-0841-419B-8094-57AC094257F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9EDCE364-442A-4129-BF44-E07CB275FFDA}
+	EndGlobalSection
+EndGlobal
