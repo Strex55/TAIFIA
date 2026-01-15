@@ -214,15 +214,19 @@ integer =
 ;
 
 (* Вещественное число *)
-float = 
-    digit,
-    { digit },
-    ".",
-    digit,
-    { digit }
-  | ".",
-    digit,
-    { digit }
+float =
+    decimal, [ exponent ]
+  | ".", digit, { digit }, [ exponent ]
+;
+
+(* Десятичное число *)
+decimal =
+    digit, { digit }, ".", digit, { digit }
+;
+
+(* Экспонента *)
+exponent =
+    ("e" | "E"), [ "+" | "-" ], digit, { digit }
 ;
 
 (* Именованные числовые константы *)
