@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Execution\Execution.csproj" />
+    <ProjectReference Include="..\Lexer\Lexer.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<_SkipUpgradeNetAnalyzersNuGetWarning>true</_SkipUpgradeNetAnalyzersNuGetWarning>
+    <Nullable>enable</Nullable>
+	<NoWarn>$(NoWarn);SA1129;SA1503;SA1518;SA1313;SA1028;SA1309;SA1214;SA1201;SA1501</NoWarn>
+  </PropertyGroup>
+
+</Project>

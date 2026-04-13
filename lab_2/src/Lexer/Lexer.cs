@@ -31,7 +31,7 @@ public class Lexer
          ["null"] = TokenType.Null,
          ["type"] = TokenType.Type,
          ["and"] = TokenType.And,
-         ["or"] = TokenType.Or,  
+         ["or"] = TokenType.Or, 
          ["not"] = TokenType.Not,
      };
 
